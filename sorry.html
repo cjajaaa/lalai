@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Pretty Little Apology 🎀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-deep: #ff5f7e;
+    --pink-mid: #ffb3c1;
+    --pink-soft: #ffe1e8;
+    --cream: #fff6f2;
+    --ink: #5c3d44;
+    --ink-soft: #a3858c;
+    --accent-mint: #bfe8d4;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body {
+    font-family: 'Playfair Display', Georgia, serif;
+    background-color: var(--cream);
+    background-image: radial-gradient(var(--pink-soft) 14%, transparent 15%);
+    background-size: 26px 26px;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .floating-coquette {
+    position: absolute;
+    font-size: 26px;
+    animation: floatGently 8s linear infinite;
+    opacity: 0.55;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .card {
+    background: #ffffff;
+    padding: 34px 30px 30px;
+    border-radius: 34px;
+    box-shadow: 0 20px 45px rgba(255, 95, 126, 0.18);
+    border: 3px solid var(--pink-mid);
+    text-align: center;
+    max-width: 400px;
+    width: 88%;
+    z-index: 10;
+    position: relative;
+  }
+
+  .chibi-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .chibi-row img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    animation: bounce 2.4s ease-in-out infinite;
+  }
+
+  .chibi-row img:nth-child(2) { animation-delay: 0.3s; }
+  .chibi-row img:nth-child(3) { animation-delay: 0.6s; }
+
+  h1 {
+    font-family: 'Pinyon Script', cursive;
+    color: var(--pink-deep);
+    font-size: 50px;
+    margin: 6px 0 2px;
+    font-weight: normal;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+
+  p#message {
+    font-size: 15px;
+    line-height: 1.75;
+    background: var(--cream);
+    padding: 18px 20px;
+    border-radius: 22px;
+    border: 1px dashed var(--pink-mid);
+    margin-bottom: 26px;
+    font-style: italic;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    min-height: 80px;
+    position: relative;
+  }
+
+  button {
+    padding: 12px 28px;
+    font-size: 15px;
+    border-radius: 30px;
+    border: 1px solid var(--pink-mid);
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.5px;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+  }
+
+  #yesBtn {
+    background-color: var(--pink-mid);
+    color: #5c3d44;
+    font-weight: 600;
+    box-shadow: 0 6px 16px rgba(255, 179, 193, 0.55);
+  }
+  #yesBtn:hover { background-color: var(--pink-deep); color: #fff; transform: scale(1.05); }
+
+  #noBtn {
+    background-color: var(--pink-deep);
+    color: #ffffff;
+    min-width: 96px;
+    min-height: 46px;
+    font-weight: 600;
+    border: 3px solid #ffffff;
+    position: fixed;
+    z-index: 20;
+    box-shadow: 0 0 0 4px rgba(255, 95, 126, 0.35), 0 8px 18px rgba(92, 61, 68, 0.25);
+    text-shadow: 0 1px 1px rgba(92, 61, 68, 0.35);
+  }
+
+  #noBtn:hover {
+    background-color: #e94768;
+    transform: scale(1.08);
+  }
+
+  .bouquet-display {
+    font-size: 36px;
+    margin-top: 18px;
+    letter-spacing: 3px;
+    display: none;
+    animation: softPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  }
+
+  .bribe-box {
+    margin-top: 22px;
+    font-size: 12px;
+    color: var(--pink-deep);
+    cursor: pointer;
+    text-decoration: underline;
+    letter-spacing: 0.5px;
+  }
+
+  @keyframes floatGently {
+    0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) rotate(15deg); opacity: 0; }
+  }
+  @keyframes softPop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+</style>
+</head>
+<body>
+
+<div class="card" id="mainCard">
+
+  <div class="chibi-row" id="chibiRow">
+    <img src="skye.png" alt="Skye chibi">
+    <img src="clove.png" alt="Clove chibi">
+    <img src="sage.webp" alt="Sage chibi">
+  </div>
+
+  <div class="ribbon-decor" id="coquetteIcon" style="font-size:22px; margin-bottom:6px;">🎀 GG WP 🎀</div>
+  <h1 id="title">Forgive me, angel?</h1>
+  <div class="subtitle" id="status">a letter to my favorite player</div>
+
+  <p id="message">
+    My dearest, I am so deeply sorry for saying those bad jokes. Makulit lang talaga me and unhinged minsan. Please can we please wrap our worries in a bow and pretend this never happened? 👉👈
+  </p>
+
+  <div class="btn-container" id="btnContainer">
+    <button id="yesBtn" onclick="forgiven()">Forgive You 🌸</button>
+    <button id="noBtn" onmouseover="reject()" onclick="reject()">No</button>
+  </div>
+
+  <div class="bouquet-display" id="bouquet">🌷🎀🌹🌸🌹🎀🌷</div>
+
+  <div class="bribe-box" id="bribe" onclick="showBribe()">✨ Open Sweet Peace Offerings ✨</div>
+</div>
+
+<script>
+  // Falling coquette aesthetics
+  const coquetteItems = ['🎀', '🌸', '🍒', '🩰', '💖', '🕊️', '🍰'];
+  for (let i = 0; i < 18; i++) {
+    const div = document.createElement('div');
+    div.className = 'floating-coquette';
+    div.innerText = coquetteItems[Math.floor(Math.random() * coquetteItems.length)];
+    div.style.left = Math.random() * 100 + 'vw';
+    div.style.animationDelay = Math.random() * 8 + 's';
+    div.style.fontSize = (Math.random() * (32 - 20) + 20) + 'px';
+    document.body.appendChild(div);
+  }
+
+  let clickCount = 0;
+  let yesSize = 15;
+  let yesPaddingX = 28;
+  let yesPaddingY = 12;
+
+  const dynamicNoPhrases = [
+    "Are you quite certain? 🥺",
+    "Mapapatawad pa ba?? 😢",
+    "But you are my sunshine 🌞",
+    "Error: please select the pink button!",
+    "I promise endless affirmation 🧸",
+    "Oh, pretty please? 🎀",
+    "ganda please forgive me 😭",
+    "Button locked in. Forever. 🦢"
+  ];
+
+  function reject() {
+    clickCount++;
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const status = document.getElementById('status');
+
+    const phraseIndex = Math.min(clickCount - 1, dynamicNoPhrases.length - 1);
+    noBtn.innerText = dynamicNoPhrases[phraseIndex];
+
+    // keep the button fully on screen
+    const rect = noBtn.getBoundingClientRect();
+    const minX = 12;
+    const minY = 12;
+    const maxX = Math.max(minX, window.innerWidth - rect.width - 12);
+    const maxY = Math.max(minY, window.innerHeight - rect.height - 12);
+    const x = minX + Math.random() * (maxX - minX);
+    const y = minY + Math.random() * (maxY - minY);
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+
+    yesSize = Math.min(yesSize + 6, 45);
+    yesPaddingX = Math.min(yesPaddingX + 10, 90);
+    yesPaddingY = Math.min(yesPaddingY + 4, 36);
+    yesBtn.style.fontSize = yesSize + 'px';
+    yesBtn.style.padding = yesPaddingY + 'px ' + yesPaddingX + 'px';
+
+    status.innerText = 'heartbreak meter: ' + Math.min(clickCount * 10, 100) + '% heavy 💔';
+  }
+
+  function showBribe() {
+    alert("🎀 Sweet Perks Just For You:\n• Mag baby talk sayo sa vc 🍰\n• Luluhod for 5mins 💋\n• A fresh bouquet of pink roses 💐\n\n(Click 'Forgive You' to redeem!)");
+  }
+
+  function forgiven() {
+    document.querySelectorAll('.floating-coquette').forEach(el => {
+      el.innerText = Math.random() > 0.5 ? '🎀' : '💖';
+    });
+
+    document.getElementById('coquetteIcon').innerText = '🌸 GG, WE WON 🌸';
+    document.getElementById('title').innerText = 'Forever Yours';
+    document.getElementById('status').innerText = 'status: Hindi na malongcoat✨';
+    document.getElementById('message').innerHTML = "Thanks for forgiving me, I'm not perfect but I'll do anything for you. pls play with me again and pansinin mo na po ako. UwU  🎀✨";
+
+    document.getElementById('bouquet').style.display = 'block';
+    document.getElementById('btnContainer').style.display = 'none';
+    document.getElementById('bribe').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
